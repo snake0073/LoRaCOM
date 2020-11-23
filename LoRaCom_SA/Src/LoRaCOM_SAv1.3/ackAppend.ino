@@ -1,6 +1,8 @@
 void ackAppend(){
 
-        if(recd_addr == '1'){
+        if(txd_addr == '0'){
+        } //do nothing, prevents erroneous confirming of broadcast messages
+        else if(recd_addr == '1'){
           chat_1 += " *";
         }
         else if(recd_addr == '2'){
