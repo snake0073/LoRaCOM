@@ -2,6 +2,7 @@
 ESP32 based LoRa Communicator
 
 Non-keyboard parts:
+
 https://www.amazon.com/gp/product/B07Q576VWZ/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
 https://www.amazon.com/gp/product/B07NB3BK5H/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
 https://www.amazon.com/gp/product/B073C2ZNVV/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
@@ -14,4 +15,5 @@ https://www.amazon.com/gp/product/B0784FPF8J/ref=ppx_yo_dt_b_search_asin_title?i
 
 
 Keyboard build schematic, parts list, code, and instructions from ElectroNoobs:
+
 https://electronoobs.com/eng_arduino_tut103.php
