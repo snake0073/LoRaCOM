@@ -477,11 +477,13 @@ if(page == 710){
         recd_mid    = rxString.indexOf(',', idk + 1);
         messagesize = rxString.substring(idk + 1, recd_mid);
         PrStr = rxString.substring(recd_mid + 3, (recd_mid + 1 + messagesize.toInt()));
+        if(txd_addr != '0'){                                                             //prevents sending acknowldement for broadcast messages
         loras.print("AT+SEND=");
         loras.print(recd_addr);
         loras.print(",1,*");
         loras.print('\r');
         loras.print('\n');
+        }
         if(txd_addr == '0'){
           recFrom += "All";
           recFrom += ' ';
