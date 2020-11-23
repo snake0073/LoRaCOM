@@ -1,6 +1,8 @@
 # LoRaCOM
 ESP32 based LoRa Communicator
 
+SD card must be FAT32 formatted and pre-loaded with blank .txt files titled "0.txt" through "9.txt", as well as one "CS.txt".
+
 Non-keyboard parts:
 
 https://www.amazon.com/gp/product/B07Q576VWZ/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
