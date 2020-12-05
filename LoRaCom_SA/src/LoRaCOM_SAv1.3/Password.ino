@@ -36,7 +36,6 @@ void enterPassword() {
         password_set = true;
         myFile = SD.open("/AES.txt", FILE_WRITE);
         myFile.print(inData_password);
-        myFile.print('{');
         myFile.close();
         delay(2000);
         display.clearDisplay();
