@@ -91,6 +91,7 @@ void composeScreenFull(){
     {
       inChar_message = Serial.read();                
       message_length = message_length + callSign_length + 1;       //We will need the length of the name later
+      scrnTime = interval + millis();
 
 
       if(inChar_message == '^')                    //If the "{" is received, that means "BACKSPACE" button was pressed
@@ -244,6 +245,7 @@ void composeScreen(){                //displayed at the bottom of each chat scre
      {
       inChar_message = Serial.read();                
       message_length = message_length + callSign_length + 1;       //We will need the length of the name later
+      scrnTime = interval + millis();
 
 
       if(inChar_message == '^')                    //If the "{" is received, that means "BACKSPACE" button was pressed
