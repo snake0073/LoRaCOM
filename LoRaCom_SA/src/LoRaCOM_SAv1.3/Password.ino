@@ -14,7 +14,13 @@ void enterPassword() {
   display.setCursor(0,0); 
   display.print("Enter Key: ");             
   display.setTextSize(1);
-  display.setCursor(0,17);        
+  display.setCursor(0,39);
+  display.print("Length: ");
+  display.print(password_length);  
+  display.setCursor(0,48);
+  display.setTextColor(WHITE,BLACK);
+  display.print("Must be 32 characters");   
+  display.println("A-F,0-9");       
   display.display();
   delay(100);
 
@@ -26,28 +32,16 @@ void enterPassword() {
       inChar_password = Serial.read();                
       password_length = password_length + 1;       //We will need the length of the name later
 
-
-      if(inChar_password == '^')                   //If the "{" is received, that means "SEND" button was pressed
-      {
-        inData_password[index_password - 1] = ' '; // Store it
-        index_password = index_password - 1;        // Increment where to write next   
-        password_length = password_length - 1;
-        index_cursor = index_cursor -1;
-        display.setTextSize(2);
-        display.setCursor(0,0); 
-        display.print("Enter Key: ");             
-        display.setTextSize(1);
-        display.setCursor(0,17);  
-        display.print(inData_password);                
-        display.print(input_cursor);
-        display.display();
-      }
-
-      else if(inChar_password == '{'){            //If the "{" is received, that means "SEND" button was pressed
+      if(inChar_password == '{'){            //If the "{" is received, that means "SEND" button was pressed
         password_set = true;
+        myFile = SD.open("/AES.txt", FILE_WRITE);
+        myFile.print(inData_password);
+        myFile.print('{');
+        myFile.close();
         delay(2000);
         display.clearDisplay();
         display.display();
+        scrnTime = interval + millis();
         }
        
       else{
@@ -61,7 +55,14 @@ void enterPassword() {
         display.setTextSize(1);
         display.setCursor(0,17); 
         display.print(inData_password); 
-        display.print(input_cursor);     
+        display.print(input_cursor);
+        display.setCursor(0,39);
+        display.print("Length: ");
+        display.print(password_length);  
+        display.setCursor(0,48);
+        display.setTextColor(WHITE,BLACK);
+        display.print("Must be 32 characters");   
+        display.println("A-F,0-9");
         display.display();
       }      
      }
