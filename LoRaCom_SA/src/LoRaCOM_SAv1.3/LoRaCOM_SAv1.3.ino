@@ -321,7 +321,7 @@ void loop() {
    if((up == HIGH)||(dwn == HIGH)||(left == HIGH)||(right == HIGH)){
     scrnTime = interval + millis();
     }
-   if((millis() >= scrnTime)&&(page != 600)&&(page != 502)&&(page != 701)&&(page != 702)&&(page != 703)&&(page != 704)&&(page != 705)&&(page != 706)&&(page != 707)&&(page != 708)&&(page != 709)&&(page != 710)){      //Screen will not timeout if on message composition or GPS time pages
+   if((millis() >= scrnTime)&&(page != 502)){      //Screen will not timeout if on message composition or GPS time pages
     display.clearDisplay();
     display.display();
     display.ssd1306_command(SSD1306_DISPLAYOFF);
@@ -459,11 +459,11 @@ if(page == 710){
         display.display();
         char rx_ack    = rxString.charAt(9);
         String recTest = rxString.substring(1,4);
-        if(rx_ack == '*'){
+        if(rx_ack == '}'){
            msg_ack = true;
            ackAppend();
         }
-        else if((recTest == "RCV")&&(rx_ack != '*')){
+        else if((recTest == "RCV")&&(rx_ack != '}')){
         newMessage = true;
         recd ++;
         //scrnTime = 10000 + millis();
@@ -481,7 +481,7 @@ if(page == 710){
         if(txd_addr != '0'){
         loras.print("AT+SEND=");
         loras.print(recd_addr);
-        loras.print(",1,*");
+        loras.print(",1,}");
         loras.print('\r');
         loras.print('\n');
         }
@@ -576,3 +576,5 @@ if(page == 710){
         }
         }
         }
+
+        
