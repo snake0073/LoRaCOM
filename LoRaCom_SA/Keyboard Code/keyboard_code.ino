@@ -27,6 +27,7 @@ int LED = A3;
 
 //Variables
 bool SHIFT = false; 
+bool CAPSL = false;
 bool send_pin_state = false;
 
 //initialize an instance of class NewKeypad
@@ -72,48 +73,106 @@ void loop() {
       else
       {
         if(SHIFT)                           //If shift is active we send special characters or UPERCASE
-        {digitalWrite(LED, LOW);
+        {
+
+          if((char)e.bit.KEY == '-')
+          {
+            CAPSL = !CAPSL;
+            if(!CAPSL){
+            digitalWrite(LED, LOW);
+            }
+          }
           /////////////////Send special characters/////////////// 
           ///////////////////////////////////////////////////////
           if((char)e.bit.KEY == '1')
-          {
-            Serial.print("!");            
+          { if(!CAPSL){
+            Serial.print("!");
+            digitalWrite(LED, LOW); 
+            }
+            else{
+            Serial.print("1");           
+            }
           }
           if((char)e.bit.KEY == '2')
-          {
-            Serial.print("/");            
+          {if(!CAPSL){
+            Serial.print("/"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("2");           
+            }   
           }
           if((char)e.bit.KEY == '3')
-          {
-            Serial.print(":");            
+          {if(!CAPSL){
+            Serial.print(":"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("3");           
+            }      
           }
           if((char)e.bit.KEY == '4')
-          {
-            Serial.print("$");            
+          {if(!CAPSL){
+            Serial.print("$"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("41");           
+            }     
           }
           if((char)e.bit.KEY == '5')
-          {
-            Serial.print("'");            
+          {if(!CAPSL){
+            Serial.print("'"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("5");           
+            }        
           }
           if((char)e.bit.KEY == '6')
-          { 
-            Serial.print(".");            
+          { if(!CAPSL){
+            Serial.print("."); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("6");           
+            }      
           }  
           if((char)e.bit.KEY == '7')
-          {
-            Serial.print(",");            
+          {if(!CAPSL){
+            Serial.print(","); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("7");           
+            } 
           }   
           if((char)e.bit.KEY == '8')
-          {
-            Serial.print("?");            
+          {if(!CAPSL){
+            Serial.print("?"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("8");           
+            } 
           }
           if((char)e.bit.KEY == '9')
-          {
-            Serial.print("(");            
+          {if(!CAPSL){
+            Serial.print("("); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("9");           
+            }    
           }
           if((char)e.bit.KEY == '0')
-          {
-            Serial.print(")");            
+          {if(!CAPSL){
+            Serial.print(")"); 
+            digitalWrite(LED, LOW);
+            }
+            else{
+            Serial.print("0");           
+            }
           }
           /////////////////////////////////////////////////////// 
           ///////////////////////////////////////////////////////
@@ -122,43 +181,73 @@ void loop() {
           ///////////////////////////////////////////////////////
           if((char)e.bit.KEY == 'q')
           {
-            Serial.print("Q");            
+            Serial.print("Q");
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }
           }
           if((char)e.bit.KEY == 'w')
           {
-            Serial.print("W");            
+            Serial.print("W");
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }            
           }
           if((char)e.bit.KEY == 'e')
           {
-            Serial.print("E");            
+            Serial.print("E");   
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }         
           }
           if((char)e.bit.KEY == 'r')
           {
-            Serial.print("R");            
+            Serial.print("R");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }
           if((char)e.bit.KEY == 't')
           {
-            Serial.print("T");            
+            Serial.print("T");   
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }         
           }
           if((char)e.bit.KEY == 'y')
           {
-            Serial.print("Y");            
+            Serial.print("Y");         
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }   
           }  
           if((char)e.bit.KEY == 'u')
           {
-            Serial.print("U");            
+            Serial.print("U");        
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }    
           }   
           if((char)e.bit.KEY == 'i')
           {
-            Serial.print("I");            
+            Serial.print("I");       
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }     
           }
           if((char)e.bit.KEY == 'o')
           {
-            Serial.print("O");            
+            Serial.print("O");        
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }    
           }
           if((char)e.bit.KEY == 'p')
           {
-            Serial.print("P");            
+            Serial.print("P");       
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }     
           }
           /////////////////////////////////////////////////////// 
           ///////////////////////////////////////////////////////
@@ -168,39 +257,66 @@ void loop() {
           ///////////////////////////////////////////////////////
           if((char)e.bit.KEY == 'a')
           {
-            Serial.print("A");            
+            Serial.print("A");       
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }     
           }
           if((char)e.bit.KEY == 's')
           {
-            Serial.print("S");            
+            Serial.print("S");
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }            
           }
           if((char)e.bit.KEY == 'd')
           {
-            Serial.print("D");            
+            Serial.print("D");     
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }       
           }
           if((char)e.bit.KEY == 'f')
           {
-            Serial.print("F");            
+            Serial.print("F");       
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }     
           }
           if((char)e.bit.KEY == 'g')
           {
-            Serial.print("G");            
+            Serial.print("G");   
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }         
           }
           if((char)e.bit.KEY == 'h')
           {
-            Serial.print("H");            
+            Serial.print("H");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }  
           if((char)e.bit.KEY == 'j')
           {
-            Serial.print("J");            
+            Serial.print("J");
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }            
           }   
           if((char)e.bit.KEY == 'k')
           {
-            Serial.print("K");            
+            Serial.print("K");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }
           if((char)e.bit.KEY == 'l')
           {
-            Serial.print("L");            
+            Serial.print("L");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }          
           /////////////////////////////////////////////////////// 
           ///////////////////////////////////////////////////////
@@ -209,36 +325,63 @@ void loop() {
           ///////////////////////////////////////////////////////
           if((char)e.bit.KEY == 'z')
           {
-            Serial.print("Z");            
+            Serial.print("Z");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }
           if((char)e.bit.KEY == 'x')
           {
-            Serial.print("X");            
+            Serial.print("X");   
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }         
           }
           if((char)e.bit.KEY == 'c')
           {
-            Serial.print("C");            
+            Serial.print("C");   
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }         
           }
           if((char)e.bit.KEY == 'v')
           {
-            Serial.print("V");            
+            Serial.print("V"); 
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }           
           }
           if((char)e.bit.KEY == 'b')
           {
-            Serial.print("B");            
+            Serial.print("B");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }
           if((char)e.bit.KEY == 'n')
           {
-            Serial.print("N");            
+            Serial.print("N");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
           }  
           if((char)e.bit.KEY == 'm')
           {
-            Serial.print("M");            
+            Serial.print("M");  
+            if(!CAPSL){
+              digitalWrite(LED, LOW);            
+            }          
+          }
+          if((char)e.bit.KEY == ',')        //"," will send a space
+          {
+            Serial.print(" ");           
           }                      
           /////////////////////////////////////////////////////// 
           ///////////////////////////////////////////////////////
-
+          if(!CAPSL)
+          {
           SHIFT = false;                    //Finally, after we send the character we disable SHIFT.
+          }
         }   
         /////////////end of shift 
           
