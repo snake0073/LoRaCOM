@@ -702,12 +702,25 @@ if(AES_page > 1){
           display.display();
           page = page - 4;
           }
+          
         if((right == HIGH)&&(smlCurs == 2)&&(AES_page == 1)){
           delay(100);
+          password_set = false;
+          myFile = SD.open("/AES.txt",FILE_READ);
+          while(!password_set){
+        if(myFile.available() >0){
+          String get_password = myFile.readString();
+          String password     = get_password.substring(0,32);
+          password_set  = true; 
+          myFile.close();     
           loras.print("AT+CPIN=");
-          loras.print(inData_password); 
+          loras.print(password); 
           loras.print('\r');
-          loras.print('\n');                     
+          loras.print('\n');
+          Serial.println(password);                     
+          String incomingString = loras.readString();
+          String ackCheck = incomingString.substring(0,3);
+          if(ackCheck == "+OK"){
           display.clearDisplay();
           display.setCursor(40,26);
           display.setTextSize(1);
@@ -718,6 +731,25 @@ if(AES_page > 1){
           display.display();
           page = page - 4;
           }
+          else if(ackCheck != "+OK"){
+          display.clearDisplay();
+          display.setCursor(1,0);
+          display.setTextSize(2);
+          display.println("ERROR");
+          display.setTextSize(1);
+          display.setCursor(0,17);
+          display.println("Power cycle device");
+          display.println("or reset AES key.");
+          display.display();
+          delay(5000);
+          display.clearDisplay();
+          display.display();
+          page = page - 4;
+          }
+        }
+        }
+        }
+          
          if((right == HIGH)&&(smlCurs == 1)){
           delay(100);
           display.clearDisplay();
