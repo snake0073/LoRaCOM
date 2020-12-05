@@ -375,7 +375,11 @@ void loop() {
           if((char)e.bit.KEY == ',')        //"," will send a space
           {
             Serial.print(" ");           
-          }                      
+          }
+          if((char)e.bit.KEY == '!')   //"!" will send a ^ for RETURN button
+          {
+            Serial.print("^");    //Return          
+          }
           /////////////////////////////////////////////////////// 
           ///////////////////////////////////////////////////////
           if(!CAPSL)
